@@ -1,0 +1,124 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@400;500&family=EB+Garamond:ital,wght@0,400;1,400&display=swap');
+@import "tailwindcss";
+:root {
+  --bg: #0a0608;
+  --bg2: #110c0f;
+  --surface: #1a1118;
+  --border: #2e1f28;
+  --gold: #c9a96e;
+  --gold-light: #e8d5a3;
+  --rose: #8b3a52;
+  --rose-light: #c4607a;
+  --text: #e8ddd5;
+  --text-muted: #7a6a6a;
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--rose); border-radius: 2px; }
+
+::selection { background: var(--rose); color: var(--text); }
+.pushable {
+  
+  position: relative;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.shadow {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  background: radial-gradient(
+  circle at center,
+  #140b10 0%,
+  #0a0608 100%
+);
+  filter: blur(8px);
+  transform: translateY(2px);
+}
+
+.front {
+  position: relative;
+  display: block;
+
+  padding: 8px 18px;
+  border-radius: 10px;
+
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255,255,255,0.2);
+
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+
+  transform: translateY(-4px);
+  transition: all 0.2s ease;
+}
+
+.pushable:hover .front {
+  transform: translateY(-6px);
+  background: rgba(255,255,255,0.14);
+}
+
+.pushable:active .front {
+  transform: translateY(-2px);
+}
+
+@keyframes sparkle {
+  0% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+}
+
+.sparkle {
+  animation: sparkle 3s ease-in-out infinite;
+}
+
+@keyframes backgroundMove {
+  0% {
+    transform: translate(0px, 0px);
+  }
+
+  50% {
+    transform: translate(40px, -40px);
+  }
+
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+.bg-animate {
+  animation: backgroundMove 12s ease-in-out infinite;
+}
